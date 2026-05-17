@@ -22,7 +22,7 @@ function Home() {
     async function fetchExpenses() {
       try {
         const token = localStorage.getItem("token");
-        const res = await axios.get("http://localhost:5001/api/expenses", {
+        const res = await axios.get("https://smartspend-backend-wb27.onrender.com/api/expenses", {
           headers: { authorization: token },
         });
         const expenses = res.data;
