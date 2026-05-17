@@ -53,7 +53,7 @@ function Signup() {
         setLoading(true);
 
         const res = await axios.post(
-          "http://localhost:5001/api/auth/signup",
+          "https://smartspend-backend-wb27.onrender.com/api/auth/signup",
           {
             email,
             password,

@@ -41,7 +41,7 @@ function Login() {
     try {
 
       const res = await axios.post(
-        "http://localhost:5001/api/auth/login",
+        "https://smartspend-backend-wb27.onrender.com/api/auth/login",
         {
           email,
           password,
