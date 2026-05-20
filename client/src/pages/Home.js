@@ -15,8 +15,13 @@ function Home() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    const user = JSON.parse(localStorage.getItem("user"));
-    if (!user) return;
+    let user = null;
+    try {
+      user = JSON.parse(localStorage.getItem("user"));
+    } catch (e) {
+      console.error("Failed to parse user from localStorage", e);
+    }
+    if (!user || !user.email) return;
 
     async function fetchData() {
       try {

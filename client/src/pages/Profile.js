@@ -13,8 +13,13 @@ function Profile() {
   const [error, setError] = useState("");
 
   useEffect(() => {
-    const u = JSON.parse(localStorage.getItem("user"));
-    if (!u) return;
+    let u = null;
+    try {
+      u = JSON.parse(localStorage.getItem("user"));
+    } catch (e) {
+      console.error("Failed to parse user from localStorage", e);
+    }
+    if (!u || !u.email) return;
     setUser(u);
 
     async function fetchProfile() {

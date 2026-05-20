@@ -52,12 +52,17 @@ function Login() {
     try {
       setLoading(true);
       const res = await api.post("/api/auth/login", { email, password });
+      
+      if (!res.data || !res.data.token) {
+        throw new Error("Invalid response from server. Check your API URL configuration.");
+      }
+
       localStorage.setItem("token", res.data.token);
       localStorage.setItem("user", JSON.stringify(res.data.user));
       navigate("/home");
     } catch (error) {
       console.error(error);
-      setError(error.response?.data?.message || "Login failed. Please try again.");
+      setError(error.response?.data?.message || error.message || "Login failed. Please try again.");
     } finally {
       setLoading(false);
     }
