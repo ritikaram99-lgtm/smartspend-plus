@@ -135,10 +135,18 @@ a { text-decoration: none; color: inherit; }
   align-items: start;
 }
 
+.two-col-grid > * {
+  min-width: 0;
+}
+
 .home-grid {
   display: grid;
   grid-template-columns: 1fr 1.5fr;
   gap: 20px;
+}
+
+.home-grid > * {
+  min-width: 0;
 }
 
 .flex-col-mobile {
