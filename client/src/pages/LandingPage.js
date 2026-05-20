@@ -60,7 +60,7 @@ function LandingPage() {
       </nav>
 
       {/* Hero */}
-      <section style={{ textAlign: "center", padding: "120px 20px 80px", maxWidth: 800, margin: "0 auto" }}>
+      <section className="hero-section">
         <div style={{
           display: "inline-flex", alignItems: "center", gap: 8,
           background: "var(--accent-dim)", border: "1px solid var(--border-glow)",
@@ -73,7 +73,7 @@ function LandingPage() {
           Your money,<br />
           <span style={{ color: "var(--accent)" }}>finally under control.</span>
         </h1>
-        <p style={{ fontSize: 18, color: "var(--text-secondary)", maxWidth: 540, margin: "0 auto 40px", lineHeight: 1.7 }}>
+        <p className="hero-subtitle">
           Track expenses, understand your habits, and build lasting wealth — all in one beautifully designed dashboard.
         </p>
         <div style={{ display: "flex", gap: 16, justifyContent: "center", flexWrap: "wrap" }}>
