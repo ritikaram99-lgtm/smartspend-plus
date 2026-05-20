@@ -407,9 +407,9 @@ function Expenses() {
         </div>
 
         {/* Right Column - Calendar */}
-        <div className="card">
+        <div className="card" style={{ overflowX: "auto" }}>
           <h3 className="section-title" style={{ marginBottom: 20 }}>📅 Expense Calendar</h3>
-          <div>
+          <div style={{ minWidth: 450 }}>
             <style>{`
               .fc { color: var(--text-primary); font-family: var(--font-body); }
               .fc .fc-col-header-cell-cushion, .fc .fc-daygrid-day-number { color: var(--text-secondary); text-decoration: none; }
