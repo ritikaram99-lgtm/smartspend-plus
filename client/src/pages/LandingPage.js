@@ -41,9 +41,8 @@ function LandingPage() {
   return (
     <div style={{ minHeight: "100vh", background: "var(--bg-void)" }}>
       {/* Navbar */}
-      <nav style={{
-        display: "flex", alignItems: "center", justifyContent: "space-between",
-        padding: "20px 60px", position: "sticky", top: 0, zIndex: 100,
+      <nav className="nav-layout" style={{
+        position: "sticky", top: 0, zIndex: 100,
         background: "rgba(8,12,20,0.8)", backdropFilter: "blur(20px)",
         borderBottom: "1px solid var(--border)"
       }}>
@@ -70,11 +69,7 @@ function LandingPage() {
         }}>
           <FiZap size={12} /> Fintech for the next generation
         </div>
-        <h1 style={{
-          fontFamily: "var(--font-display)", fontSize: "clamp(46px, 8vw, 84px)",
-          fontWeight: 800, lineHeight: 1.05, letterSpacing: "normal",
-          marginBottom: 24
-        }}>
+        <h1 className="hero-title">
           Your money,<br />
           <span style={{ color: "var(--accent)" }}>finally under control.</span>
         </h1>
@@ -88,8 +83,7 @@ function LandingPage() {
       </section>
 
       {/* Stats */}
-      <section style={{
-        display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 1,
+      <section className="grid-4" style={{
         maxWidth: 900, margin: "0 auto 100px", borderRadius: "var(--radius-lg)",
         overflow: "hidden", border: "1px solid var(--border)", background: "var(--border)"
       }}>
@@ -106,7 +100,7 @@ function LandingPage() {
         <h2 style={{ fontFamily: "var(--font-display)", fontSize: 44, fontWeight: 700, textAlign: "center", marginBottom: 56, letterSpacing: "normal" }}>
           Everything you need to <span style={{ color: "var(--accent)" }}>win financially</span>
         </h2>
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 24 }}>
+        <div className="grid-3">
           {features.map((f, i) => (
             <div key={i} style={{
               background: "var(--bg-card)", border: "1px solid var(--border)",
@@ -127,7 +121,7 @@ function LandingPage() {
       {/* Testimonials */}
       <section style={{ maxWidth: 1100, margin: "0 auto 100px", padding: "0 20px" }}>
         <h2 style={{ fontFamily: "var(--font-display)", fontSize: 44, fontWeight: 700, textAlign: "center", marginBottom: 56, letterSpacing: "normal" }}>Loved by <span style={{ color: "var(--accent)" }}>real users</span></h2>
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)", gap: 24 }}>
+        <div className="grid-3">
           {testimonials.map((t, i) => (
             <div key={i} style={{ background: "var(--bg-card)", border: "1px solid var(--border)", borderRadius: "var(--radius-lg)", padding: "30px" }}>
               <p style={{ color: "var(--text-secondary)", fontSize: 14, lineHeight: 1.8, marginBottom: 20 }}>"{t.text}"</p>
@@ -153,7 +147,7 @@ function LandingPage() {
       </section>
 
       {/* Footer */}
-      <footer style={{ borderTop: "1px solid var(--border)", padding: "32px 60px", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+      <footer className="footer-layout" style={{ borderTop: "1px solid var(--border)" }}>
         <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
           <FiZap color="var(--accent)" />
           <span style={{ fontFamily: "var(--font-display)", fontWeight: 700 }}>SmartSpend+</span>

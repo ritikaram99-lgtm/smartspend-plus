@@ -78,11 +78,7 @@ function Login() {
         pointerEvents: "none",
       }} />
 
-      <div style={{
-        width: "100%", maxWidth: 420, background: "var(--bg-card)",
-        border: "1px solid var(--border)", borderRadius: "var(--radius-xl)",
-        padding: "48px 40px", boxShadow: "var(--shadow-card)",
-      }}>
+      <div className="auth-card">
         {/* Logo */}
         <div style={{ textAlign: "center", marginBottom: 40 }}>
           <div style={{

@@ -87,11 +87,7 @@ function Signup() {
 
   return (
     <div style={{ minHeight: "100vh", display: "flex", alignItems: "center", justifyContent: "center", background: "var(--bg-void)", padding: 20 }}>
-      <div style={{
-        width: "100%", maxWidth: 420, background: "var(--bg-card)",
-        border: "1px solid var(--border)", borderRadius: "var(--radius-xl)",
-        padding: "48px 40px", boxShadow: "var(--shadow-card)",
-      }}>
+      <div className="auth-card">
         <div style={{ textAlign: "center", marginBottom: 40 }}>
           <div style={{
             width: 48, height: 48, background: "var(--accent)", borderRadius: 14,
