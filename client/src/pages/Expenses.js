@@ -15,10 +15,11 @@ const MONTHS = ["January","February","March","April","May","June","July","August
   <div style={{
     position: "fixed", inset: 0, background: "rgba(0,0,0,0.7)",
     backdropFilter: "blur(8px)", display: "flex", alignItems: "center",
-    justifyContent: "center", zIndex: 999,
+    justifyContent: "center", zIndex: 999, padding: "20px", overflowY: "auto"
   }}>
     <div className="card" style={{
-      width: "90%", maxWidth: 400, boxShadow: "var(--shadow-card)",
+      width: "100%", maxWidth: 400, boxShadow: "var(--shadow-card)",
+      maxHeight: "90vh", overflowY: "auto"
     }}>
       {children}
     </div>
@@ -334,7 +335,7 @@ function Expenses() {
 
           {/* Table */}
           <div className="table-responsive" style={{ background: "var(--bg-card)", border: "1px solid var(--border)", borderRadius: "var(--radius-lg)", marginBottom: 32 }}>
-            <table style={{ width: "100%", borderCollapse: "collapse" }}>
+            <table style={{ width: "100%", borderCollapse: "collapse", minWidth: 500 }}>
               <thead>
                 <tr style={{ borderBottom: "1px solid var(--border)" }}>
                   {["Date", "Category", "Amount", "Note", ""].map(h => (
