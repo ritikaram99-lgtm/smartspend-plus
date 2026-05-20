@@ -11,15 +11,13 @@ const CAT_EMOJI = { Food: "🍔", Travel: "✈️", Entertainment: "🎬", Bills
 const CAT_COLOR = { Food: "#f59e0b", Travel: "#3b82f6", Entertainment: "#ec4899", Bills: "#8b5cf6", Shopping: "#06b6d4" };
 const MONTHS = ["January","February","March","April","May","June","July","August","September","October","November","December"];
 
-const ModalOverlay = ({ children }) => (
+  const ModalOverlay = ({ children }) => (
   <div style={{
     position: "fixed", inset: 0, background: "rgba(0,0,0,0.7)",
     backdropFilter: "blur(8px)", display: "flex", alignItems: "center",
     justifyContent: "center", zIndex: 999,
   }}>
-    <div style={{
-      background: "var(--bg-card)", border: "1px solid var(--border)",
-      borderRadius: "var(--radius-xl)", padding: "36px 32px",
+    <div className="card" style={{
       width: "90%", maxWidth: 400, boxShadow: "var(--shadow-card)",
     }}>
       {children}
@@ -179,7 +177,7 @@ function Expenses() {
       {/* Header */}
       <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 32 }}>
         <div>
-          <h1 style={{ fontFamily: "var(--font-display)", fontSize: 36, fontWeight: 800, letterSpacing: "normal" }}>Expenses</h1>
+          <h1 className="page-title">Expenses</h1>
           <p style={{ color: "var(--text-secondary)", fontSize: 14, marginTop: 4 }}>
             {filterExpenses.length} transaction{filterExpenses.length !== 1 ? "s" : ""} this month
           </p>
@@ -200,7 +198,7 @@ function Expenses() {
       {modal && (
         <ModalOverlay>
           <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 24 }}>
-            <h2 style={{ fontFamily: "var(--font-display)", fontSize: 20, fontWeight: 700 }}>Add Expense</h2>
+            <h2 className="section-title" style={{ fontSize: 20 }}>Add Expense</h2>
             <button onClick={closeAddModal} style={{ background: "none", border: "none", color: "var(--text-muted)", fontSize: 20, padding: 0 }}>
               <FiX />
             </button>
@@ -258,7 +256,7 @@ function Expenses() {
       {editModal && (
         <ModalOverlay>
           <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 24 }}>
-            <h2 style={{ fontFamily: "var(--font-display)", fontSize: 20, fontWeight: 700 }}>Edit Expense</h2>
+            <h2 className="section-title" style={{ fontSize: 20 }}>Edit Expense</h2>
             <button onClick={closeEditModal} style={{ background: "none", border: "none", color: "var(--text-muted)", fontSize: 20, padding: 0 }}>
               <FiX />
             </button>
@@ -409,8 +407,8 @@ function Expenses() {
         </div>
 
         {/* Right Column - Calendar */}
-        <div style={{ background: "var(--bg-card)", border: "1px solid var(--border)", borderRadius: "var(--radius-lg)", padding: "24px" }}>
-          <h3 style={{ fontFamily: "var(--font-display)", fontSize: 18, fontWeight: 700, marginBottom: 20 }}>📅 Expense Calendar</h3>
+        <div className="card">
+          <h3 className="section-title" style={{ marginBottom: 20 }}>📅 Expense Calendar</h3>
           <div>
             <style>{`
               .fc { color: var(--text-primary); font-family: var(--font-body); }

@@ -21,7 +21,12 @@ function Home() {
     } catch (e) {
       console.error("Failed to parse user from localStorage", e);
     }
-    if (!user || !user.email) return;
+    if (!user || !user.email) {
+      localStorage.removeItem("token");
+      localStorage.removeItem("user");
+      navigate("/login");
+      return;
+    }
 
     async function fetchData() {
       try {
@@ -85,9 +90,9 @@ function Home() {
   const catEmoji = { Food: "🍔", Travel: "✈️", Entertainment: "🎬", Bills: "📄", Shopping: "🛍️" };
 
   const StatCard = ({ label, value, sub, color = "var(--accent)" }) => (
-    <div style={{ background: "var(--bg-card)", border: "1px solid var(--border)", borderRadius: "var(--radius-lg)", padding: "28px 24px", flex: 1 }}>
+    <div className="card" style={{ flex: 1 }}>
       <p style={{ color: "var(--text-secondary)", fontSize: 13, marginBottom: 12 }}>{label}</p>
-      <p style={{ fontFamily: "var(--font-display)", fontSize: 32, fontWeight: 700, color, letterSpacing: "-1px" }}>
+      <p className="stat-value" style={{ color }}>
         ₹{Number(value).toLocaleString()}
       </p>
       {sub && <p style={{ color: "var(--text-muted)", fontSize: 12, marginTop: 6 }}>{sub}</p>}
@@ -99,7 +104,7 @@ function Home() {
       {/* Header */}
       <div style={{ marginBottom: 36 }}>
         <p style={{ color: "var(--text-secondary)", fontSize: 14, marginBottom: 6 }}>Good {greeting} 👋</p>
-        <h1 style={{ fontFamily: "var(--font-display)", fontSize: 38, fontWeight: 800, letterSpacing: "normal" }}>
+        <h1 className="page-title">
           {loading ? "Loading..." : name}
         </h1>
       </div>
@@ -114,7 +119,7 @@ function Home() {
       {/* Tip + Recent */}
       <div className="home-grid">
         {/* Tip */}
-        <div style={{ background: "var(--bg-card)", border: "1px solid var(--border-glow)", borderRadius: "var(--radius-lg)", padding: "28px 24px" }}>
+        <div className="card" style={{ borderColor: "var(--border-glow)" }}>
           <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 14 }}>
             <FiActivity color="var(--accent)" />
             <span style={{ fontWeight: 600, fontSize: 14 }}>Smart Insight</span>
@@ -134,7 +139,7 @@ function Home() {
         </div>
 
         {/* Recent Expenses */}
-        <div style={{ background: "var(--bg-card)", border: "1px solid var(--border)", borderRadius: "var(--radius-lg)", padding: "28px 24px" }}>
+        <div className="card">
           <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 20 }}>
             <span style={{ fontWeight: 600, fontSize: 14, display: "flex", alignItems: "center", gap: 8 }}>
               <FiCalendar color="var(--accent)" size={15} /> Recent Expenses

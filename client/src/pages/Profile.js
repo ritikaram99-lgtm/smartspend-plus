@@ -19,7 +19,12 @@ function Profile() {
     } catch (e) {
       console.error("Failed to parse user from localStorage", e);
     }
-    if (!u || !u.email) return;
+    if (!u || !u.email) {
+      localStorage.removeItem("token");
+      localStorage.removeItem("user");
+      window.location.href = "/login";
+      return;
+    }
     setUser(u);
 
     async function fetchProfile() {
@@ -87,16 +92,14 @@ function Profile() {
   return (
     <AppLayout>
       <div style={{ marginBottom: 32 }}>
-        <h1 style={{ fontFamily: "var(--font-display)", fontSize: 36, fontWeight: 800, letterSpacing: "normal" }}>Profile</h1>
+        <h1 className="page-title">Profile</h1>
         <p style={{ color: "var(--text-secondary)", fontSize: 14, marginTop: 4 }}>Manage your account and financial settings</p>
       </div>
 
       <div style={{ maxWidth: 580 }}>
         {/* Avatar card */}
-        <div style={{
-          background: "var(--bg-card)", border: "1px solid var(--border)",
-          borderRadius: "var(--radius-lg)", padding: "28px", marginBottom: 20,
-          display: "flex", alignItems: "center", gap: 20,
+        <div className="card" style={{
+          marginBottom: 20, display: "flex", alignItems: "center", gap: 20,
         }}>
           <img
             src={`https://api.dicebear.com/7.x/bottts/svg?seed=${profile.name || user.email}`}
@@ -112,9 +115,9 @@ function Profile() {
         </div>
 
         {/* Form / View */}
-        <div style={{ background: "var(--bg-card)", border: "1px solid var(--border)", borderRadius: "var(--radius-lg)", padding: "28px" }}>
+        <div className="card">
           <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 24 }}>
-            <h3 style={{ fontFamily: "var(--font-display)", fontSize: 16, fontWeight: 700 }}>Financial Details</h3>
+            <h3 className="section-title">Financial Details</h3>
             {!edit && !loading && (
               <button
                 onClick={() => setEdit(true)}
@@ -210,11 +213,9 @@ function Profile() {
 
       {/* Success toast */}
       {saved && (
-        <div style={{
+        <div className="card" style={{
           position: "fixed", top: "50%", left: "50%", transform: "translate(-50%, -50%)",
-          background: "var(--bg-card)", border: "1px solid var(--border-glow)",
-          padding: "32px 48px", borderRadius: "var(--radius-lg)",
-          boxShadow: "0 20px 40px rgba(0,0,0,0.4)",
+          borderColor: "var(--border-glow)", boxShadow: "0 20px 40px rgba(0,0,0,0.4)",
           display: "flex", flexDirection: "column", alignItems: "center", gap: 16,
           zIndex: 9999,
         }}>

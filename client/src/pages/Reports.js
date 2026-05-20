@@ -90,7 +90,7 @@ function Reports() {
   return (
     <AppLayout>
       <div style={{ marginBottom: 32 }}>
-        <h1 style={{ fontFamily: "var(--font-display)", fontSize: 36, fontWeight: 800, letterSpacing: "normal" }}>Reports</h1>
+        <h1 className="page-title">Reports</h1>
         <p style={{ color: "var(--text-secondary)", fontSize: 14, marginTop: 4 }}>Analyze your spending over time</p>
       </div>
 
@@ -117,15 +117,15 @@ function Reports() {
 
       {/* Charts */}
       <div className="two-col-grid">
-        <div style={{ background: "var(--bg-card)", border: "1px solid var(--border)", borderRadius: "var(--radius-lg)", padding: "28px" }}>
-          <h3 style={{ fontFamily: "var(--font-display)", fontSize: 16, fontWeight: 700, marginBottom: 20 }}>📈 Monthly Trend</h3>
+        <div className="card">
+          <h3 className="section-title" style={{ marginBottom: 20 }}>📈 Monthly Trend</h3>
           {loading
             ? <p style={{ color: "var(--text-muted)", fontSize: 14 }}>Loading...</p>
             : lineData && <Line data={lineData} options={chartOpts} />
           }
         </div>
-        <div style={{ background: "var(--bg-card)", border: "1px solid var(--border)", borderRadius: "var(--radius-lg)", padding: "28px" }}>
-          <h3 style={{ fontFamily: "var(--font-display)", fontSize: 16, fontWeight: 700, marginBottom: 20 }}>📊 By Category</h3>
+        <div className="card">
+          <h3 className="section-title" style={{ marginBottom: 20 }}>📊 By Category</h3>
           {loading
             ? <p style={{ color: "var(--text-muted)", fontSize: 14 }}>Loading...</p>
             : barData && Object.keys(barData.labels || {}).length > 0

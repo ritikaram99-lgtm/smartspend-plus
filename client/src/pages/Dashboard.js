@@ -89,9 +89,9 @@ function Dashboard() {
   };
 
   const StatCard = ({ label, value, prefix = "₹", color = "var(--text-primary)" }) => (
-    <div style={{ background: "var(--bg-card)", border: "1px solid var(--border)", borderRadius: "var(--radius-lg)", padding: "24px" }}>
+    <div className="card">
       <p style={{ color: "var(--text-secondary)", fontSize: 12, marginBottom: 10, textTransform: "uppercase", letterSpacing: "0.5px" }}>{label}</p>
-      <p style={{ fontFamily: "var(--font-display)", fontSize: 28, fontWeight: 700, color, letterSpacing: "-1px" }}>
+      <p className="stat-value" style={{ color }}>
         {prefix}{Number(value).toLocaleString()}
       </p>
     </div>
@@ -100,25 +100,23 @@ function Dashboard() {
   return (
     <AppLayout>
       <div style={{ marginBottom: 32 }}>
-        <h1 style={{ fontFamily: "var(--font-display)", fontSize: 36, fontWeight: 800, letterSpacing: "normal" }}>
+        <h1 className="page-title">
           Financial Dashboard
         </h1>
         <p style={{ color: "var(--text-secondary)", fontSize: 14, marginTop: 4 }}>Your complete financial overview</p>
       </div>
 
       {/* Score banner */}
-      <div style={{
+      <div className="card" style={{
         background: "linear-gradient(135deg, var(--bg-card) 0%, rgba(99,211,183,0.05) 100%)",
-        border: "1px solid var(--border-glow)", borderRadius: "var(--radius-lg)",
-        padding: "24px 28px", marginBottom: 24,
+        borderColor: "var(--border-glow)", marginBottom: 24,
         display: "flex", alignItems: "center", justifyContent: "space-between",
       }}>
         <div>
           <p style={{ color: "var(--text-secondary)", fontSize: 13, marginBottom: 4 }}>Financial Health Score</p>
           <div style={{ display: "flex", alignItems: "baseline", gap: 4 }}>
-            <span style={{
-              fontFamily: "var(--font-display)", fontSize: 52, fontWeight: 800, letterSpacing: "-2px",
-              color: score >= 75 ? "var(--success)" : score >= 50 ? "var(--warning)" : "var(--danger)",
+            <span className="stat-value" style={{
+              fontSize: 52, color: score >= 75 ? "var(--success)" : score >= 50 ? "var(--warning)" : "var(--danger)",
             }}>
               {loading ? "—" : score}
             </span>
@@ -146,7 +144,7 @@ function Dashboard() {
       </div>
 
       {/* Savings progress */}
-      <div style={{ background: "var(--bg-card)", border: "1px solid var(--border)", borderRadius: "var(--radius-lg)", padding: "24px", marginBottom: 24 }}>
+      <div className="card" style={{ marginBottom: 24 }}>
         <div style={{ display: "flex", justifyContent: "space-between", marginBottom: 12 }}>
           <span style={{ fontSize: 14, fontWeight: 600 }}>Savings Rate</span>
           <span style={{ color: "var(--accent)", fontWeight: 700, fontSize: 14 }}>{savingsPct.toFixed(1)}%</span>
@@ -167,14 +165,14 @@ function Dashboard() {
 
       {/* Insight + Chart */}
       <div className="two-col-grid">
-        <div style={{ background: "var(--bg-card)", border: "1px solid var(--border)", borderRadius: "var(--radius-lg)", padding: "24px" }}>
-          <h3 style={{ fontFamily: "var(--font-display)", fontSize: 16, fontWeight: 700, marginBottom: 14 }}>🧠 Smart Insights</h3>
+        <div className="card">
+          <h3 className="section-title" style={{ marginBottom: 14 }}>🧠 Smart Insights</h3>
           <p style={{ color: "var(--text-secondary)", fontSize: 14, lineHeight: 1.8 }}>
             {loading ? "Loading..." : insight || "Add expenses to see personalized insights."}
           </p>
         </div>
-        <div style={{ background: "var(--bg-card)", border: "1px solid var(--border)", borderRadius: "var(--radius-lg)", padding: "24px" }}>
-          <h3 style={{ fontFamily: "var(--font-display)", fontSize: 16, fontWeight: 700, marginBottom: 14 }}>Expense Breakdown</h3>
+        <div className="card">
+          <h3 className="section-title" style={{ marginBottom: 14 }}>Expense Breakdown</h3>
           {!loading && Object.keys(categoryData).length > 0 ? (
             <div style={{ maxWidth: 220, margin: "0 auto" }}>
               <Pie
