@@ -26,8 +26,8 @@ function LandingPage() {
   const { theme, toggleTheme } = useTheme();
 
   const Btn = ({ children, onClick, variant = "primary" }) => (
-    <button onClick={onClick} style={{
-      padding: "13px 28px", borderRadius: "50px", fontSize: 15, fontWeight: 600,
+    <button className="landing-btn" onClick={onClick} style={{
+      borderRadius: "50px", fontWeight: 600,
       border: variant === "primary" ? "none" : "1.5px solid var(--border-glow)",
       background: variant === "primary" ? "var(--accent)" : "transparent",
       color: variant === "primary" ? "#060f0b" : "var(--accent)",
