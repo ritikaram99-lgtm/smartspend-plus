@@ -15,21 +15,15 @@ function Sidebar() {
   const { theme, toggleTheme } = useTheme();
 
   function logout() {
-  localStorage.removeItem("token");
-  localStorage.removeItem("user");
-
-  navigate("/login");
-}
+    localStorage.removeItem("token");
+    localStorage.removeItem("user");
+    navigate("/login");
+  }
 
   return (
-    <aside style={{
-      width: "240px", minHeight: "100vh", background: "var(--bg-surface)",
-      borderRight: "1px solid var(--border)", display: "flex",
-      flexDirection: "column", padding: "28px 16px", position: "fixed",
-      top: 0, left: 0, zIndex: 100
-    }}>
+    <aside className="sidebar">
       {/* Logo */}
-      <div style={{ display: "flex", alignItems: "center", gap: "10px", padding: "0 12px 36px" }}>
+      <div className="sidebar-logo-container">
         <div style={{
           width: 36, height: 36, borderRadius: "10px",
           background: "var(--accent)", display: "flex", alignItems: "center",
@@ -39,24 +33,21 @@ function Sidebar() {
       </div>
 
       {/* Nav */}
-      <nav style={{ flex: 1, display: "flex", flexDirection: "column", gap: "4px" }}>
+      <nav className="sidebar-nav">
         {links.map(l => (
-          <NavLink key={l.to} to={l.to} style={({ isActive }) => ({
-            display: "flex", alignItems: "center", gap: "12px",
-            padding: "11px 14px", borderRadius: "var(--radius-sm)",
-            fontSize: 14, fontWeight: 500, transition: "all 0.2s",
+          <NavLink key={l.to} to={l.to} className="sidebar-link" style={({ isActive }) => ({
             background: isActive ? "var(--accent-dim)" : "transparent",
             color: isActive ? "var(--accent)" : "var(--text-secondary)",
             border: isActive ? "1px solid var(--border-glow)" : "1px solid transparent"
           })}>
             <span style={{ fontSize: 17 }}>{l.icon}</span>
-            {l.label}
+            <span className="sidebar-link-text">{l.label}</span>
           </NavLink>
         ))}
       </nav>
 
       {/* Theme Toggle */}
-      <button onClick={toggleTheme} style={{
+      <button onClick={toggleTheme} className="sidebar-theme-btn" style={{
         display: "flex", alignItems: "center", gap: "12px",
         padding: "11px 14px", borderRadius: "var(--radius-sm)",
         background: "transparent", border: "1px solid transparent",
@@ -71,7 +62,7 @@ function Sidebar() {
       </button>
 
       {/* Logout */}
-      <button onClick={logout} style={{
+      <button onClick={logout} className="sidebar-logout-btn" style={{
         display: "flex", alignItems: "center", gap: "12px",
         padding: "11px 14px", borderRadius: "var(--radius-sm)",
         background: "transparent", border: "1px solid transparent",
